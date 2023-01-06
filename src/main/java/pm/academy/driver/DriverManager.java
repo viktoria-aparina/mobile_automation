@@ -31,7 +31,7 @@ public class DriverManager {
 
     public static void createDriver(String udid, String wda, String deviceName, String platformVersion) throws MalformedURLException {
         AppiumDriver<MobileElement> driver = switch (CONFIGURATION_TYPE) {
-            case ANDROID_LOCAL -> new AndroidDriver<>(new URL("https://oauth-wladyslaw.permyakov-7bd90:*****0817@ondemand.us-west-1.saucelabs.com:443/wd/hub"),
+            case ANDROID_LOCAL -> new AndroidDriver<>(AppiumServerConfigurator.getService(),
                     CapabilitiesConfigurator.getAndroidLocalCapabilities(udid, deviceName, platformVersion));
             case IOS_LOCAL -> new IOSDriver<>(AppiumServerConfigurator.getService(),
                     CapabilitiesConfigurator.getIosLocalCapabilities(deviceName, wda, udid));
