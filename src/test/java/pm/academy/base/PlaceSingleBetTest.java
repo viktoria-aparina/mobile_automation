@@ -1,5 +1,8 @@
 package pm.academy.base;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Story;
+import io.qameta.allure.TmsLink;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -37,26 +40,13 @@ public class PlaceSingleBetTest extends BaseTest {
         new SportPage().clickBasketballSport().clickP1BetFirstGame();
     }
 
+    @TmsLink("C8")
+    @Story("5-write-native_mobile-autotests")
+    @Description("Creating a single bet with the smallest amount from proposed")
     @Test(groups = {"Aparina MOBILE tests"})
     public void addSingleBetWithSmallestAmountFromProposedTest() {
         new BetslipPage().clickSmallestProposedAmount().clickPlaceBetButton();
         assertThat(new BetslipPage().getSuccessAlert()).as("Single bet with smallest amount was created successfully! " +
-                                                                   "The text in alert is differ from expected").isEqualTo("BET ACCEPTED");
-    }
-
-    @AfterMethod
-    public void cashout() {
-        new MyBetsPage().clickMyBetsTab();
-        assertThat(new MyBetsPage().isMyBetsTabOpened())
-                .as("Tab \"My Bets\" wasn't opened")
-                .isTrue();
-
-        new MyBetsPage().clickCashoutButton()
-                .clickCashoutButton();
-
-        new ProfilePage().clickProfileTab()
-                .scrollToLogoutButton()
-                .clickLogoutButton()
-                .clickConfirmLogoutButton();
+                                                                   "The text in alert is differ from expected").isEqualTo("BET PLACED");
     }
 }

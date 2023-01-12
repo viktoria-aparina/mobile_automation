@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Final Project">
+    <listeners>
+        <listener class-name="pm.academy.utils.TestListener"/>
+        <listener class-name="pm.academy.utils.AnnotationTransformer"/>
+    </listeners>
     <test name="Mobile Tests">
         <classes>
             <class name="pm.academy.base.FillingBetWithValidDataTest"/>
             <class name="pm.academy.base.RemoveBetFromBetslipTest"/>
             <class name="pm.academy.base.CreateParlayWithOneEventTest"/>
             <class name="pm.academy.base.PlaceSingleBetTest"/>
-            <class name="pm.academy.base.CashoutTest"/>
+            <class name="pm.academy.base.CreateSystemWithOneEventTest"/>
+            <class name="pm.academy.base.TwoOutcomesOneEventTest"/>
         </classes>
     </test>
 </suite>

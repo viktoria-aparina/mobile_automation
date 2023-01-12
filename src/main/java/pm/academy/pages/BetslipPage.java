@@ -46,7 +46,10 @@ public class BetslipPage extends BasePage {
     private MobileElement expressTab;
 
     @AndroidFindBy(accessibility = "tvSnackBarError")
-    private MobileElement expressAlert;
+    private MobileElement expressSystemAlert;
+
+    @AndroidFindBy(accessibility = "SYSTEM")
+    private MobileElement systemTab;
 
     @AndroidFindBy(accessibility = "ivActionDelete")
     private MobileElement clearBetslipButton;
@@ -90,6 +93,12 @@ public class BetslipPage extends BasePage {
         return this;
     }
 
+    public BetslipPage clickSystemTab() {
+        systemTab.click();
+        log.info("Click on the tab \"System\" was successful");
+        return this;
+    }
+
     public BetslipPage clickClearBetslipButton() {
         clearBetslipButton.click();
         log.info("Click on the button \"Clear betslip\" was successful");
@@ -108,20 +117,12 @@ public class BetslipPage extends BasePage {
         return this;
     }
 
-    public ArrayList<Double> getCoefficientsFromBetslip() {
-        ArrayList<Double> coefficientsFromBetslip = new ArrayList<>();
-        for (MobileElement coefficient : coefficients) {
-            coefficientsFromBetslip.add(Double.valueOf(coefficient.getText()));
-        }
-        return coefficientsFromBetslip;
-    }
-
     public String getSuccessAlert() {
         return successAlert.getText();
     }
 
-    public String getParlayAlert() {
-        return expressAlert.getText();
+    public String getParlaySystemAlert() {
+        return expressSystemAlert.getText();
     }
 
     public BetslipPage clickDoneButton() {

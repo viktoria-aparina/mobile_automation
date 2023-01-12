@@ -12,8 +12,7 @@ import pm.academy.pages.SportPage;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class CreateParlayWithOneEventTest extends BaseTest {
-
+public class CreateSystemWithOneEventTest extends BaseTest {
     @BeforeMethod
     public void chooseBet() {
         if (new LoginPage().isCloseButtonDisplayed()) {
@@ -26,15 +25,15 @@ public class CreateParlayWithOneEventTest extends BaseTest {
         new SportPage().clickBasketballSport().clickFilter12HButton().clickP1BetFirstGame();
     }
 
-    @TmsLink("C18")
+    @TmsLink("C19")
     @Story("5-write-native_mobile-autotests")
     @Description("Creating parlay with a single bet in betslip")
-    @Test(groups = {"Volosiuk MOBILE tests"})
+    @Test(groups = {"Aparina MOBILE tests"})
     public void createParlayWithOneEvent() {
-        new BetslipPage().clickAddToBetslipButton().clickMinimizedBetslip().clickExpressTab();
+        new BetslipPage().clickAddToBetslipButton().clickMinimizedBetslip().clickSystemTab();
         assertThat(new BetslipPage().getParlaySystemAlert())
                 .as("The text in alert is differ from expected")
-                .isEqualTo("Parlay must contain at least two bets");
+                .isEqualTo("System must have at least three bets");
 
         assertThat(new BetslipPage().isEnabledPlaceBetButton())
                 .as("The button \"Place bet\" is enabled")

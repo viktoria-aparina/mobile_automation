@@ -1,5 +1,8 @@
 package pm.academy.base;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Story;
+import io.qameta.allure.TmsLink;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pm.academy.pages.BetslipPage;
@@ -22,6 +25,9 @@ public class FillingBetWithValidDataTest extends BaseTest {
         new SportPage().clickBasketballSport().clickFilter12HButton().clickP1BetFirstGame();
     }
 
+    @TmsLink("C10")
+    @Story("5-write-native_mobile-autotests")
+    @Description("Filling the field \"Bet Total\" with valid data")
     @Test(groups = {"Riabtseva Mobile tests"})
     public void fillBetTotalWithValidData() {
         for (double betAmount : new double[]{20., 21., 45.76}) {

@@ -3,15 +3,13 @@ package pm.academy.pages;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import lombok.extern.log4j.Log4j2;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 
 @Log4j2
 public class MyBetsPage extends BasePage {
 
     @AndroidFindBy(accessibility = "my-bets-tab")
     private MobileElement myBetsTab;
-
-    @AndroidFindBy(accessibility = "OPEN BETS")
-    private MobileElement openedBetsTab;
 
     @AndroidFindBy(id = "com.parimatch:id/cashoutButton")
     private MobileElement cashoutButton;
@@ -25,14 +23,16 @@ public class MyBetsPage extends BasePage {
         return this;
     }
 
-    public MyBetsPage clickCashoutButton() {
-        waitForExpectedElement(cashoutButton).click();
+    public MyBetsPage clickCashoutButton() throws InterruptedException {
+        waitForExpectedElement(cashoutButton).isEnabled();
+        cashoutButton.click();
+        Thread.sleep(1500);
         log.info("Click on the button \"Cashout\"  was successful");
         return this;
     }
 
     public boolean isMyBetsTabOpened() {
-        return waitForExpectedElement(openedBetsTab).isDisplayed();
+        return waitForExpectedElement(cashoutButton).isEnabled();
     }
 
     public String getCashoutAlert() {
