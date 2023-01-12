@@ -1,6 +1,7 @@
 package pm.academy;
 
 import io.appium.java_client.events.api.general.AppiumWebDriverEventListener;
+import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -8,9 +9,8 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+@Log4j2
 public class EventLogListener implements AppiumWebDriverEventListener {
-
-    private static final Logger LOG = LogManager.getRootLogger();
 
     @Override
     public void beforeChangeValueOf(WebElement webElement, WebDriver webDriver) {
@@ -19,7 +19,7 @@ public class EventLogListener implements AppiumWebDriverEventListener {
 
     @Override
     public void afterChangeValueOf(WebElement webElement, WebDriver webDriver) {
-        LOG.info("Type operation has been finished");
+        log.info("Type operation has been finished");
     }
 
     @Override
@@ -99,7 +99,7 @@ public class EventLogListener implements AppiumWebDriverEventListener {
 
     @Override
     public void afterClickOn(WebElement element, WebDriver driver) {
-        LOG.info("Click operation has been finished");
+        log.info("Click operation has been finished");
     }
 
     @Override
@@ -154,6 +154,6 @@ public class EventLogListener implements AppiumWebDriverEventListener {
 
     @Override
     public void afterGetText(WebElement element, WebDriver driver, String text) {
-        LOG.info("Get text operation has been finished");
+        log.info("Get text operation has been finished");
     }
 }

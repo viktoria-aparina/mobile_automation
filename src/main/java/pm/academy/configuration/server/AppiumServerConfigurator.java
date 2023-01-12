@@ -48,7 +48,6 @@ public final class AppiumServerConfigurator {
                 .usingPort(port)
                 .withCapabilities(cap)
                 .withArgument(GeneralServerFlag.SESSION_OVERRIDE)
-//                .withLogFile(appiumLogger.getLogFile())
                 .withArgument(GeneralServerFlag.BASEPATH, "/wd/hub/")
                 .withArgument(LOG_LEVEL, "error")
                 .build());

@@ -18,7 +18,6 @@ public interface Capabilities extends Config {
     @Key("apps.path")
     String appsPath();
 
-    // Desired capabilities
     @Key("${deviceType}.${runType}.${buildType}.app")
     String app();
 

@@ -22,7 +22,6 @@ public final class CapabilitiesConfigurator {
     private CapabilitiesConfigurator() {
     }
 
-
     public static DesiredCapabilities getAndroidLocalCapabilities(String udid, String deviceName, String platformVersion) {
         var capabilities = new DesiredCapabilities();
         capabilities.setCapability(APP, FileUtils.getAppLocation());
@@ -70,6 +69,5 @@ public final class CapabilitiesConfigurator {
 
     private static void setAndroidCommonCapabilities(DesiredCapabilities capabilities, RunType runType) {
         capabilities.setCapability(APP_PACKAGE, CapabilitiesReader.get(ANDROID, runType).appPackage());
-//        capabilities.setCapability(APP_ACTIVITY, CapabilitiesReader.get(ANDROID, runType).appActivity());
     }
 }
