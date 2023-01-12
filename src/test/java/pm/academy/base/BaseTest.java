@@ -2,8 +2,7 @@ package pm.academy.base;
 
 import org.testng.annotations.*;
 import pm.academy.driver.DriverManager;
-import pm.academy.pages.LoginPage;
-import pm.academy.pages.SighUpPage;
+import pm.academy.pages.*;
 
 import java.net.MalformedURLException;
 
@@ -12,7 +11,7 @@ import static pm.academy.driver.DriverManager.getDriver;
 
 public class BaseTest {
 
-    @BeforeTest(alwaysRun = true)
+    @BeforeMethod(alwaysRun = true)
     @Parameters({"UDID", "WDA", "DeviceName", "PlatformVersion"})
     public void setupSession(
             @Optional String udid,
@@ -33,22 +32,14 @@ public class BaseTest {
         DriverManager.terminateAppium();
     }
 
-    @BeforeMethod
-    public void setUp() {
-        new SighUpPage().clickLoginButton();
-
-        assertThat(new LoginPage().isLoginPageOpened()).as("Login Page wasn't opened")
-                .isTrue();
-
-        new LoginPage().clickSelectLoginTypeButton()
-                .clickIdLoginTypeButton()
-                .putIdInLoginInput()
-                .putPasswordInPasswordInput()
-                .clickLogInButton();
-    }
-
     @AfterMethod(alwaysRun = true)
     public void resetApp() {
         getDriver().resetApp();
+    }
+
+    protected void assertOpenBottomTab(boolean actualResult) {
+        assertThat(actualResult)
+                .as("The tab wasn't opened")
+                .isTrue();
     }
 }

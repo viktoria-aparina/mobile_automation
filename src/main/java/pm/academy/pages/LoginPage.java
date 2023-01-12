@@ -23,6 +23,15 @@ public class LoginPage extends BasePage {
     @AndroidFindBy(accessibility = "Password field")
     private MobileElement passwordInput;
 
+    @AndroidFindBy(accessibility = "password_visibility_check_box")
+    private MobileElement visibilityPassword;
+
+    @AndroidFindBy(id = "android:id/button1")
+    private MobileElement okButton;
+
+    @AndroidFindBy(accessibility = "close_button")
+    private MobileElement closeButton;
+
     public boolean isLoginPageOpened() {
         return waitForExpectedElement(logInButton).isDisplayed();
     }
@@ -46,7 +55,8 @@ public class LoginPage extends BasePage {
     }
 
     public LoginPage putPasswordInPasswordInput() {
-        waitForExpectedElement(passwordInput).sendKeys(PropertiesLoader.loadProperties().getProperty("password"));
+        waitForExpectedElement(passwordInput).click();
+        passwordInput.sendKeys(PropertiesLoader.loadProperties().getProperty("password"));
         passwordInput.click();
         log.info("The field \"Password\" was filled in successfully");
         return this;
@@ -56,5 +66,25 @@ public class LoginPage extends BasePage {
         logInButton.click();
         log.info("Click on \"Log In\" was successful");
         return new SportPage();
+    }
+
+    public LoginPage clickVisibilityPassword() {
+        visibilityPassword.click();
+        log.info("Click on \"Visibility password\" was successful");
+        return this;
+    }
+
+    public LoginPage clickOkButton() {
+        waitForExpectedElement(okButton).click();
+        log.info("Click on the button \"Ok\" was successful");
+        return this;
+    }
+
+    public boolean isCloseButtonDisplayed() {
+        return waitForExpectedElement(closeButton).isDisplayed();
+    }
+
+    public void clickCloseButton() {
+        waitForExpectedElement(closeButton).click();
     }
 }

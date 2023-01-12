@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Final Project">
+    <test name="Mobile Tests">
+        <classes>
+            <class name="pm.academy.base.FillingBetWithValidDataTest"/>
+            <class name="pm.academy.base.RemoveBetFromBetslipTest"/>
+            <class name="pm.academy.base.CreateParlayWithOneEventTest"/>
+            <class name="pm.academy.base.PlaceSingleBetTest"/>
+            <class name="pm.academy.base.CashoutTest"/>
+        </classes>
+    </test>
+</suite>

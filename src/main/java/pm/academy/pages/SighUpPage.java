@@ -11,4 +11,8 @@ public class SighUpPage extends BasePage {
     public void clickLoginButton() {
         waitForExpectedElement(logInButton).click();
     }
+
+    public boolean isSighUpPageOpened() {
+        return waitForExpectedElement(logInButton).isDisplayed();
+    }
 }
